@@ -28,6 +28,7 @@ public static class SKFunctionExtensions
     /// <summary>
     /// Change the LLM Max Tokens configuration
     /// </summary>
+
     /// <param name="skFunction">Semantic function</param>
     /// <param name="maxTokens">Tokens count</param>
     /// <returns>Self instance</returns>
@@ -127,6 +128,8 @@ public static class SKFunctionExtensions
 
         if (mutableContext)
         {
+            // Mutate context to utilize the passed in input
+            context.Variables.Update(input);
             return function.InvokeAsync(context, settings);
         }
 
